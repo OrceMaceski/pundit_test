@@ -5,10 +5,12 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
+    # @books = policy_scope(Book)
   end
 
   # GET /books/1 or /books/1.json
   def show
+    authorize @book
   end
 
   # GET /books/new
@@ -18,6 +20,7 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    authorize @book
   end
 
   # POST /books or /books.json
